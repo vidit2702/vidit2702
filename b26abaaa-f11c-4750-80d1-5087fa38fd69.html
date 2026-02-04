@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Be My Valentine</title>
+  <style>
+    /* Basic styling for a pink background and centered content */
+    body {
+      background-color: #FFCCE5;
+      color: #333;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    #question {
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    #message {
+      font-size: 1.5em;
+      margin-top: 30px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Question text -->
+  <div id="question">Will you be my Valentine?</div>
+  
+  <!-- Yes and No buttons -->
+  <button id="yesButton" onclick="handleYes()">Yes ❤</button>
+  <button id="noButton" onclick="handleNo()">No</button>
+  
+  <!-- Area for messages that appear after clicking -->
+  <div id="message"></div>
+  
+  <script>
+    // List of messages to show when "No" is clicked
+    const messages = [
+      "Think again!",
+      "Just click yes already! 😍",
+      "Don't do this! 😢",
+      "I'll be sad... 🥺",
+      "Give me a chance!"
+    ];
+    let msgIndex = 0;  // which message we are on
+
+    // Called when "Yes" button is clicked
+    function handleYes() {
+      // Show final affirmative message
+      document.getElementById("message").innerText = "Yay! I love you! ❤️";
+      // Optionally, we could disable buttons now or end interaction
+      document.getElementById("yesButton").disabled = true;
+      document.getElementById("noButton").disabled = true;
+    }
+
+    // Called when "No" button is clicked
+    function handleNo() {
+      // If there are remaining messages, show the next one
+      if (msgIndex < messages.length) {
+        document.getElementById("message").innerText = messages[msgIndex];
+        msgIndex++;
+      } else {
+        // After all messages, we show the final love message
+        handleYes();
+      }
+    }
+  </script>
+
+</body>
+</html>
